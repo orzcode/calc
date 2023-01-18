@@ -84,6 +84,7 @@ a {
 	align-items: end;
 	user-select: text;
 	max-width: 38rem;
+	min-height: 3.4rem;
 	overflow: hidden;
 }
 #display{
