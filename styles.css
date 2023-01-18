@@ -29,11 +29,11 @@ a {
 }
 .btnShadow {
 	cursor:pointer;
-	box-shadow: 0.5px 0.5px 0.5px 0.5px rgb(50, 50, 50, 1);
+	box-shadow: 0.5px 0.5px 1px 0.5px var(--ebony);
 	transition: box-shadow 0.1s;
 }
 .btnShadow:hover {
-	box-shadow: 1.5px 1.5px 1.5px 1.5px rgb(50, 50, 50, 0.5);
+	box-shadow: 1px 1px 1px 1px var(--ebony);
 }
 .btnShadow:active {
 	transform: translate3d(0.5px, 1px, 0);
@@ -64,63 +64,93 @@ a {
 		"four five six plus"
 		"one two three equl"
 		"zero zero dec equl";
-	height: 64rem;
+	height: 68rem;
 	width: 40rem;
 	margin: 10rem auto;
 	background-color: var(--desert-sand);
 	outline: 1rem solid var(--antique-brass);
-	border-radius: 2px;
+	border-radius: 8px;
 	gap: 1rem;
 	padding: 1rem;
+	box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
 }
 
 #memory{
 	grid-area: mem;
 	text-align: left;
+	font-family: 'LCD', sans-serif;
+	display: flex;
+	justify-content: end;
+	align-items: end;
+	user-select: text;
+	max-width: 38rem;
+	overflow: hidden;
 }
 #display{
 	grid-area: dsp;
 	font-family: 'LCD', sans-serif;
-	font-size: 9rem;
+	font-size: 6rem;
 	height: 9rem;
+	max-width: 12ch;
+	display:inline-block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: clip;
 	display: flex;
 	align-items: center;
 	justify-content: end;
 	align-self: center;
 	user-select: text;
+	padding-right: 5px;
 	border: 1px solid #6B705C;
 	background-color: #B7B7A4;
 	/* background-color: #ADD8E6; */
 	/* background-color: #87CEFA; */
 }
+
+
 #clr{
 	grid-area: clr;
 }
 #dvd{
 	grid-area: dvd;
+	font-size: 4rem;
 }
 #mlt{
 	grid-area: mlt;
+	padding-bottom: 0.6rem;
+	font-size: 3.5rem;
 }
 #mns{
 	grid-area: mns;
+	font-size: 5rem;
 }
 #plus{
 	grid-area: plus;
+	font-size: 5rem;
 }
 #equl{
 	grid-area: equl;
+	font-size: 5rem;
 }
 #zero{
 	grid-area: zero;
 }
+#dec {
+	grid-area: dec;
+	font-size: 6rem;
+}
+
 #logo{
 	grid-area: logo;
 	height: min-content;
+	font-size: 2rem;
 }
 #lightdark{
 	grid-area: lightdark;
 	height: min-content;
+	font-size: 2rem;
+	text-align: right;
 }
 
 
@@ -133,7 +163,7 @@ a {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border-radius: 3px;
+	border-radius: 10px;
 }
 .keyTall{
 	height: 180px;
