@@ -1,6 +1,7 @@
 let displayValue = 0;
 let memoryValue;
 let decimalFlag = false;
+let operatorType;
 //////////
 let display = document.querySelector('#display');
 let memory = document.querySelector('#memory');
@@ -8,27 +9,42 @@ let memory = document.querySelector('#memory');
 //////////
 
 //////////
-function add(value1, value2){
-	return value1 + value2;
+function add(memoryValue, displayValue){
+	return memoryValue + displayValue;
 }
 
-function subtract(value1, value2){
-	return value1 - value2;
+function subtract(memoryValue, displayValue){
+	return memoryValue - displayValue;
 }
 
-function multiply(value1, value2){
-	return value1 * value2;
+function multiply(memoryValue, displayValue){
+	return memoryValue * displayValue;
 }
 
-function divide(value1, value2){
-	if (value2 === 0){
+function divide(memoryValue, displayValue){
+	if (displayValue === 0){
 		return "Reality Breaks";
 	}else
-	return value1 / value2;
+	return memoryValue / displayValue;
 }
 /////////
-function operate(operator, value1, value2){
-	return operator(value1, value2);
+function operation(operator){
+	decimalFlag = false;
+	memory.innerHTML = displayValue;
+	operatorType = operator + "()";
+	//add operator type symbol to memval
+	display.innerHTML = '';
+	if (operatorType !== ''){
+		equals();
+		operation();
+	}
+}
+/////////
+function equals(){
+	memory.innerHTML = operatorType;
+	display.innerHTML = memory.innerHTML;
+	// operatorType = ''; //is this needed??
+	//done?	clear display values/mem values?
 }
 /////////
 function keyedNumber(keyedNumber){
@@ -53,6 +69,8 @@ function decimal(){
 function clr(){
 	display.innerHTML = "";
 	memory.innerHTML = "";
+	displayValue = 0;
+	memoryValue = 0;
 	decimalFlag = false;
 }
 /////////
