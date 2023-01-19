@@ -1,5 +1,6 @@
-let displayValue;
+let displayValue = 0;
 let memoryValue;
+let decimalFlag = false;
 //////////
 let display = document.querySelector('#display');
 let memory = document.querySelector('#memory');
@@ -32,10 +33,26 @@ function operate(operator, value1, value2){
 /////////
 function keyedNumber(keyedNumber){
 	display.insertAdjacentText('beforeend', keyedNumber);
+	displayValue = display.innerHTML
+}
+// Appends the keyed number to the right of any current numbers
+// in the Display, and then sets the full Display value var
+/////////
+function decimal(){
+	switch(decimalFlag){
+		case false:
+			decimalFlag = true;
+			display.insertAdjacentText('beforeend', '.');
+			displayValue = display.innerHTML
+			break;
+		case true:
+			break;
+	}
 }
 /////////
 function clr(){
 	display.innerHTML = "";
 	memory.innerHTML = "";
+	decimalFlag = false;
 }
 /////////
