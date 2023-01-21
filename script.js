@@ -1,50 +1,60 @@
+let display = document.querySelector('#display');
+let memory = document.querySelector('#memory');
+//////////
 let displayValue = 0;
 let memoryValue;
 let decimalFlag = false;
 let operatorType;
 //////////
-let display = document.querySelector('#display');
-let memory = document.querySelector('#memory');
-
-//////////
-
-//////////
-function add(memoryValue, displayValue){
-	return memoryValue + displayValue;
+// memory.innerHTML = memoryValue;
+// display.innerHTML = displayValue;
+////////////////////////////
+function add(value1, value2){
+	return value1 + value2;
 }
-
-function subtract(memoryValue, displayValue){
-	return memoryValue - displayValue;
+function subtract(value1, value2){
+	return value1 - value2;
 }
-
-function multiply(memoryValue, displayValue){
-	return memoryValue * displayValue;
+function multiply(value1, value2){
+	return value1 * value2;
 }
-
-function divide(memoryValue, displayValue){
-	if (displayValue === 0){
+function divide(value1, value2){
+	if (value2 === 0){
 		return "Reality Breaks";
 	}else
-	return memoryValue / displayValue;
+	return value1 / value2;
 }
-/////////
-function operation(operator){
+///////////////////////////
+// function symbolReturner(symbolName){
+// 	switch(symbolName){
+// 		case "add":
+// 			return "+";
+// 		case "divide":
+// 			return "÷";
+// 		case "multiply":
+// 			return "x";
+// 		case "subtract":
+// 			return "-";
+// 	}
+// }
+///////////////////////////
+function operation(operator, symbol){
 	decimalFlag = false;
-	memory.innerHTML = displayValue;
-	operatorType = operator + "()";
-	//add operator type symbol to memval
+	memory.innerHTML = displayValue + symbol;
+	memoryValue = displayValue;
 	display.innerHTML = '';
-	if (operatorType !== ''){
-		equals();
-		operation();
-	}
+	operatorType = operator;
+	return operatorType;
+	//code goes here
 }
 /////////
 function equals(){
-	memory.innerHTML = operatorType;
-	display.innerHTML = memory.innerHTML;
+	console.log(operatorType);
+	// memory.innerHTML = operatorType;
+	// display.innerHTML = memory.innerHTML;
 	// operatorType = ''; //is this needed??
 	//done?	clear display values/mem values?
+	/// 		dogshit ass code that doesn't work
 }
 /////////
 function keyedNumber(keyedNumber){
