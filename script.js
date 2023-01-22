@@ -42,14 +42,15 @@ function operation(operator, symbol){
 	decimalFlag = false;
 	memory.innerHTML = displayValue + symbol;
 	memoryValue = displayValue;
-	display.innerHTML = '';
+	display.innerHTML = ''; //do I really want to clear display?
 	operatorType = operator;
 	return operatorType;
 	//code goes here
 }
 /////////
 function equals(){
-	console.log(operatorType);
+	//operatorType(memoryValue, displayValue);
+
 	// memory.innerHTML = operatorType;
 	// display.innerHTML = memory.innerHTML;
 	// operatorType = ''; //is this needed??

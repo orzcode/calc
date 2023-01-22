@@ -115,12 +115,11 @@ a {
 }
 #dvd{
 	grid-area: dvd;
-	font-size: 4rem;
+	font-size: 5rem;
 }
 #mlt{
 	grid-area: mlt;
-	padding-bottom: 0.6rem;
-	font-size: 3.5rem;
+	font-size: 5rem;
 }
 #mns{
 	grid-area: mns;
