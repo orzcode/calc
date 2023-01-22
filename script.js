@@ -43,13 +43,27 @@ function operation(operator, symbol){
 	memory.innerHTML = displayValue + symbol;
 	memoryValue = displayValue;
 	display.innerHTML = ''; //do I really want to clear display?
+
 	operatorType = operator;
 	return operatorType;
-	//code goes here
+		////method one - on hold for now
 }
 /////////
-function equals(){
-	//operatorType(memoryValue, displayValue);
+function equals(type){
+	switch(type){
+		case "add":
+			add(memoryValue, displayValue);
+			break;
+		case "subtract":
+			subtract(memoryValue, displayValue);
+			break;
+		case "multiply":
+			multiply(memoryValue, displayValue);
+			break;
+		case "divide":
+			divide(memoryValue, displayValue);
+			break;
+	}
 
 	// memory.innerHTML = operatorType;
 	// display.innerHTML = memory.innerHTML;
@@ -61,6 +75,7 @@ function equals(){
 function keyedNumber(keyedNumber){
 	display.insertAdjacentText('beforeend', keyedNumber);
 	displayValue = display.innerHTML
+	Number(displayValue);
 }
 // Appends the keyed number to the right of any current numbers
 // in the Display, and then sets the full Display value var
