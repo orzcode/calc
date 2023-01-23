@@ -5,38 +5,30 @@ let displayValue = 0;
 let memoryValue;
 let decimalFlag = false;
 let operatorType;
+let result;
 //////////
 // memory.innerHTML = memoryValue;
 // display.innerHTML = displayValue;
 ////////////////////////////
 function add(value1, value2){
-	return value1 + value2;
+	result = Number(value1) + Number(value2);
+	return result;
 }
 function subtract(value1, value2){
-	return value1 - value2;
+	result = Number(value1) - Number(value2);
+	return result;
 }
 function multiply(value1, value2){
-	return value1 * value2;
+	result = Number(value1) * Number(value2);
+	return result;
 }
 function divide(value1, value2){
-	if (value2 === 0){
-		return "Reality Breaks";
+	if (Number(value2) === 0){
+		display.innerHTML = "Reality Breaks!";
 	}else
-	return value1 / value2;
+	result = Number(value1) / Number(value2);
+	return result;
 }
-///////////////////////////
-// function symbolReturner(symbolName){
-// 	switch(symbolName){
-// 		case "add":
-// 			return "+";
-// 		case "divide":
-// 			return "÷";
-// 		case "multiply":
-// 			return "x";
-// 		case "subtract":
-// 			return "-";
-// 	}
-// }
 ///////////////////////////
 function operation(operator, symbol){
 	decimalFlag = false;
@@ -52,7 +44,7 @@ function operation(operator, symbol){
 function equals(type){
 	switch(type){
 		case "add":
-			add(memoryValue, displayValue);
+			console.log(add(memoryValue, displayValue));
 			break;
 		case "subtract":
 			subtract(memoryValue, displayValue);
@@ -64,12 +56,10 @@ function equals(type){
 			divide(memoryValue, displayValue);
 			break;
 	}
-
-	// memory.innerHTML = operatorType;
-	// display.innerHTML = memory.innerHTML;
-	// operatorType = ''; //is this needed??
-	//done?	clear display values/mem values?
-	/// 		dogshit ass code that doesn't work
+	clr();
+	displayValue = result;
+	display.innerHTML = result;
+	console.log("result is probably zero:" + result);
 }
 /////////
 function keyedNumber(keyedNumber){
@@ -98,5 +88,6 @@ function clr(){
 	displayValue = 0;
 	memoryValue = 0;
 	decimalFlag = false;
+	operatorType = '';
 }
 /////////

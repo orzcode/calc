@@ -90,9 +90,9 @@ a {
 #display{
 	grid-area: dsp;
 	font-family: 'LCD', sans-serif;
-	font-size: 6rem;
+	font-size: 5.4rem;
 	height: 9rem;
-	max-width: 12ch;
+	width: 38rem;
 	display:inline-block;
 	overflow: hidden;
 	white-space: nowrap;
