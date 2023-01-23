@@ -3,9 +3,10 @@ let memory = document.querySelector('#memory');
 //////////
 let displayValue = 0;
 let memoryValue;
-let decimalFlag = false;
+let hasDecimal = false;
 let operatorType;
 let result;
+let opInProgress;
 //////////
 // memory.innerHTML = memoryValue;
 // display.innerHTML = displayValue;
@@ -31,10 +32,12 @@ function divide(value1, value2){
 }
 ///////////////////////////
 function operation(operator, symbol){
-	decimalFlag = false;
+	hasDecimal = false;
 	memory.innerHTML = displayValue + symbol;
 	memoryValue = displayValue;
-	display.innerHTML = ''; //do I really want to clear display?
+	display.innerHTML = 0; //do I really want to clear display?
+
+	opInProgress = true;
 
 	operatorType = operator;
 	return operatorType;
@@ -56,38 +59,75 @@ function equals(type){
 			divide(memoryValue, displayValue);
 			break;
 	}
-	clr();
-	displayValue = result;
-	display.innerHTML = result;
-	console.log("result is probably zero:" + result);
+	clr("equalsType");
+	console.log(result);
+	console.log(opInProgress);
+	displayValue = parseFloat(result.toFixed(2));
+	display.innerHTML = parseFloat(result.toFixed(2));
+	//rounds to 2 decimal places, and lops off extra zeroes
+	result = displayValue;
+	opInProgress = false;
+	console.log("Result is: " + result + " and type is " + typeof result);
 }
 /////////
 function keyedNumber(keyedNumber){
+	if (opInProgress === false){
+		displayValue = 0;
+		opInProgress = true;
+	}
 	display.insertAdjacentText('beforeend', keyedNumber);
 	displayValue = display.innerHTML
 	Number(displayValue);
+	result = Number(displayValue);
+	console.log(result);
+	console.log(opInProgress);
 }
 // Appends the keyed number to the right of any current numbers
 // in the Display, and then sets the full Display value var
 /////////
 function decimal(){
-	switch(decimalFlag){
+	switch(hasDecimal){
 		case false:
-			decimalFlag = true;
+			hasDecimal = true;
 			display.insertAdjacentText('beforeend', '.');
-			displayValue = display.innerHTML
+			displayValue = Number(display.innerHTML);
 			break;
 		case true:
 			break;
 	}
 }
 /////////
-function clr(){
-	display.innerHTML = "";
-	memory.innerHTML = "";
+function clr(type){
+	if (type !== "equalsType"){
+		result = 0;
+	}
+	display.innerHTML = 0;
+	memory.innerHTML = '';
 	displayValue = 0;
 	memoryValue = 0;
-	decimalFlag = false;
+	hasDecimal = false;
 	operatorType = '';
+	opInProgress = false;
+	
 }
 /////////
+window.addEventListener("keydown", (e) => {
+    switch (e.key) {
+        case "9": keyedNumber(9); break;
+        case "8": keyedNumber(8); break;
+        case "7": keyedNumber(7); break;
+        case "6": keyedNumber(6); break;
+        case "5": keyedNumber(5); break;
+        case "4": keyedNumber(4); break;
+        case "3": keyedNumber(3); break;
+        case "2": keyedNumber(2); break;
+        case "1": keyedNumber(1); break;
+        case "0": keyedNumber(0); break;
+        case "+": operation('add', '+'); break;
+        case "-": operation('subtract', '-'); break;
+        case "*": operation('multiply', '×'); break;
+        case "/": operation('divide', '÷'); break;
+        case ".": decimal(); break;
+        case "Enter": equals(operatorType); break;
+    }
+})
