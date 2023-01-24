@@ -29,25 +29,35 @@ a {
 }
 .btnShadow {
 	cursor:pointer;
-	box-shadow: 0.5px 0.5px 1px 0.5px var(--ebony);
+	box-shadow: 0.5px 0.5px 1px 0.5px var(--boxshadow);
 	transition: box-shadow 0.1s;
 }
 .btnShadow:hover {
-	box-shadow: 1px 1px 1px 1px var(--ebony);
+	box-shadow: 1px 1px 1px 1px var(--boxshadow);
 }
 .btnShadow:active {
 	transform: translate3d(0.5px, 1px, 0);
 }
 
 :root {
-/* CSS HSL */
---antique-brass: hsla(21, 43%, 65%, 1);
---desert-sand: hsla(24, 43%, 76%, 1);
---champagne-pink: hsla(26, 100%, 92%, 1);
---ash-gray: hsla(60, 12%, 68%, 1);
---artichoke: hsla(60, 12%, 60%, 1);
---ebony: hsla(75, 10%, 40%, 1);
-/* https://coolors.co/palette/cb997e-ddbea9-ffe8d6-b7b7a4-a5a58d-6b705c */
+	/*Light Mode*/
+	--calc-outline: hsla(21, 43%, 65%, 1);
+	--calc-body: hsla(24, 43%, 76%, 1);
+	--button-body: #FFE8D6;
+	--boxshadow: hsla(75, 10%, 40%, 1);
+	--display-box: #B7B7A4;
+	--display-border: #6B705C;
+	color: black;
+}
+
+[data-theme="dark"] {
+	--calc-outline: rgb(0, 1, 40);
+	--calc-body: #0d304b;
+	--button-body: #104d67;
+	--boxshadow: rgb(0, 1, 40);
+	--display-box: #162457c1;
+	--display-border: rgb(0, 1, 40);
+	color: rgb(0, 174, 255);
 }
 /* ---------------------------------------------------- */
 
@@ -67,8 +77,8 @@ a {
 	height: 68rem;
 	width: 40rem;
 	margin: 10rem auto;
-	background-color: var(--desert-sand);
-	outline: 1rem solid var(--antique-brass);
+	background-color: var(--calc-body);
+	outline: 1rem solid var(--calc-outline);
 	border-radius: 8px;
 	gap: 1rem;
 	padding: 1rem;
@@ -103,8 +113,8 @@ a {
 	align-self: center;
 	user-select: text;
 	padding-right: 5px;
-	border: 1px solid #6B705C;
-	background-color: #B7B7A4;
+	border: 1px solid var(--display-border);
+	background-color: var(--display-box);
 	/* background-color: #ADD8E6; */
 	/* background-color: #87CEFA; */
 }
@@ -159,7 +169,7 @@ a {
 .keySq{
 	width: 84px;
 	height: 81px;
-	background-color: #FFE8D6;
+	background-color: var(--button-body);
 	display: flex;
 	align-items: center;
 	justify-content: center;
