@@ -72,7 +72,7 @@ function equals(type){
 /////////
 function keyedNumber(keyedNumber){
 	if (opInProgress === false){
-		displayValue = 0;
+		displayValue = '';
 		opInProgress = true;
 	}
 	display.insertAdjacentText('beforeend', keyedNumber);
