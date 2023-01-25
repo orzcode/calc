@@ -46,7 +46,7 @@ function operation(operator, symbol){
 function equals(type){
 	switch(type){
 		case "add":
-			console.log(add(memoryValue, displayValue));
+			add(memoryValue, displayValue);
 			break;
 		case "subtract":
 			subtract(memoryValue, displayValue);
@@ -59,14 +59,13 @@ function equals(type){
 			break;
 	}
 	clr("equalsType");
-	console.log(result);
-	console.log(opInProgress);
 	displayValue = parseFloat(result.toFixed(2));
 	display.innerHTML = parseFloat(result.toFixed(2));
 	//rounds to 2 decimal places, and lops off extra zeroes
 	result = displayValue;
 	opInProgress = false;
-	console.log("Result is: " + result + " and type is " + typeof result);
+	console.log("After hitting Equals, result var is: " + result + " and type is " + typeof result);
+	console.log("After hitting Equals, opInProgress var is: " + opInProgress);
 }
 /////////
 function keyedNumber(keyedNumber){
@@ -88,8 +87,8 @@ function keyedNumber(keyedNumber){
 	result = Number(displayValue);
 	console.log("After pressing number, displayValue is " + displayValue);
 	console.log("After pressing number, displayInnerHTML is " + display.innerHTML);
-	console.log("Result is: " + result);
-	console.log("opInProgress is: " + opInProgress);
+	console.log("After pressing number, result is: " + result + " and type is " + typeof result);
+	console.log("After pressing number, opInProgress is: " + opInProgress);
 }
 // Appends the keyed number to the right of any current numbers
 // in the Display, and then sets the full Display value var
@@ -112,6 +111,7 @@ function clr(type){
 	if (type !== "equalsType"){
 		result = 0;
 		hasDecimal = false;
+		//checks to see if the answer (after an Equals operation) has a decimal - if so, prevents you from adding another
 	}
 	display.innerHTML = "0";
 	memory.innerHTML = '';
