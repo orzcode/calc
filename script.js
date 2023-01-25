@@ -111,12 +111,12 @@ function decimal(){
 function clr(type){
 	if (type !== "equalsType"){
 		result = 0;
+		hasDecimal = false;
 	}
 	display.innerHTML = "0";
 	memory.innerHTML = '';
 	displayValue = 0;
-	memoryValue = 0;
-	hasDecimal = false;
+	memoryValue = 0;	
 	operatorType = '';
 	opInProgress = false;
 	
