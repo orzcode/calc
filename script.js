@@ -8,6 +8,7 @@ let hasDecimal = false;
 let operatorType;
 let result;
 let opInProgress;
+let resultDisplayed = false;
 //////////
 ////////////////////////////
 function add(value1, value2){
@@ -63,6 +64,7 @@ function equals(type){
 	display.innerHTML = parseFloat(result.toFixed(2));
 	//rounds to 2 decimal places, and lops off extra zeroes
 	result = displayValue;
+	resultDisplayed = true;
 	opInProgress = false;
 	console.log("After hitting Equals, result var is: " + result + " and type is " + typeof result);
 	console.log("After hitting Equals, opInProgress var is: " + opInProgress);
@@ -81,6 +83,15 @@ function keyedNumber(keyedNumber){
 		display.innerHTML = '0.';
 		console.log("IF sub-statement #2 (displayInnerHTML 0. was true) triggered")
 	}
+	////////
+	if (resultDisplayed === true){
+		display.innerHTML = '';
+		resultDisplayed = false;
+		console.log("IF sub-statement #3 (resultDisplayed flag was true) triggered")
+	}
+	//Over-writes the displayed result after hitting Equals, if you press a number.
+	//E.G If display shows 2, and you press 5, it will erase 2 and show 5. As if a fresh start
+	///////
 	display.insertAdjacentText('beforeend', keyedNumber);
 	displayValue = display.innerHTML
 	Number(displayValue);
