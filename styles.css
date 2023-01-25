@@ -5,7 +5,7 @@
 	/* outline: 1px solid black; */
 }
 html {
-	background-color: rgb(200, 200, 200);
+	background-color: var(--html-body);
 	font-family: 'Audiowide', sans-serif;
 	font-size: 62.5%;
 	/* FONTSIZE TRICK-- 1 rem = 10 px here, usually 1 rem = 16px */
@@ -47,6 +47,7 @@ a {
 	--boxshadow: hsla(75, 10%, 40%, 1);
 	--display-box: #B7B7A4;
 	--display-border: #6B705C;
+	--html-body: rgb(200, 200, 200);
 	color: black;
 }
 
@@ -57,6 +58,7 @@ a {
 	--boxshadow: rgb(0, 1, 40);
 	--display-box: #162457c1;
 	--display-border: rgb(0, 1, 40);
+	--html-body: rgb(40, 40, 40);
 	color: rgb(0, 174, 255);
 }
 /* ---------------------------------------------------- */
@@ -193,7 +195,7 @@ a {
 }
   .darkmode-switch {
 	display: inline-block;
-	height: 34px;
+	height: 19px;
 	position: relative;
 	width: 60px;
   }  
@@ -201,36 +203,36 @@ a {
 	display:none;
   }  
   .slider {
-	background-color: #ccc;
+	background-color: var(--calc-outline);
 	bottom: 0;
 	cursor: pointer;
 	left: 0;
 	position: absolute;
 	right: 0;
 	top: 0;
-	transition: .4s;
+	transition: .3s;
   }  
   .slider:before {
-	background-color: #fff;
+	background-color: var(--button-body);
 	bottom: 4px;
 	content: "";
-	height: 26px;
+	height: 12px;
 	left: 4px;
 	position: absolute;
-	transition: .4s;
+	transition: .3s;
 	width: 26px;
   }  
   input:checked + .slider {
-	background-color: #66bb6a;
+	background-color: var(--calc-outline);
   }  
   input:checked + .slider:before {
 	transform: translateX(26px);
   }  
   .slider.round {
-	border-radius: 34px;
+	border-radius: 5px;
   }  
   .slider.round:before {
-	border-radius: 50%;
+	border-radius: 5px;
   }
 /*-----------------*/
 /* ----: CHANGE: transition speed, colors, size
