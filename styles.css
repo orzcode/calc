@@ -97,13 +97,15 @@ a {
 	user-select: text;
 	max-width: 38rem;
 	min-height: 3.4rem;
+	max-height: 3.4rem;
 	overflow: hidden;
 }
 #display{
 	grid-area: dsp;
 	font-family: 'LCD', sans-serif;
-	font-size: 5.4rem;
-	height: 9rem;
+	font-size: 5.5rem;
+	min-height: 9rem;
+	max-height: 9rem;
 	width: 38rem;
 	display:inline-block;
 	overflow: hidden;

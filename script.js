@@ -2,14 +2,13 @@ let display = document.querySelector('#display');
 let memory = document.querySelector('#memory');
 //////////
 let displayValue = 0;
+display.innerHTML = 0;
 let memoryValue;
 let hasDecimal = false;
 let operatorType;
 let result;
 let opInProgress;
 //////////
-// memory.innerHTML = memoryValue;
-// display.innerHTML = displayValue;
 ////////////////////////////
 function add(value1, value2){
 	result = Number(value1) + Number(value2);
@@ -33,7 +32,7 @@ function divide(value1, value2){
 ///////////////////////////
 function operation(operator, symbol){
 	hasDecimal = false;
-	memory.innerHTML = displayValue + symbol;
+	memory.innerHTML = displayValue + " " + symbol;
 	memoryValue = displayValue;
 	display.innerHTML = 0; //do I really want to clear display?
 
@@ -75,12 +74,22 @@ function keyedNumber(keyedNumber){
 		displayValue = '';
 		opInProgress = true;
 	}
+	if (display.innerHTML === "0"){
+		display.innerHTML = '';
+		console.log("IF sub-statement #1 (displayInnerHTML 0 was true) triggered")
+	}
+	if (display.innerHTML === "0."){
+		display.innerHTML = '0.';
+		console.log("IF sub-statement #2 (displayInnerHTML 0. was true) triggered")
+	}
 	display.insertAdjacentText('beforeend', keyedNumber);
 	displayValue = display.innerHTML
 	Number(displayValue);
 	result = Number(displayValue);
-	console.log(result);
-	console.log(opInProgress);
+	console.log("After pressing number, displayValue is " + displayValue);
+	console.log("After pressing number, displayInnerHTML is " + display.innerHTML);
+	console.log("Result is: " + result);
+	console.log("opInProgress is: " + opInProgress);
 }
 // Appends the keyed number to the right of any current numbers
 // in the Display, and then sets the full Display value var
@@ -91,6 +100,8 @@ function decimal(){
 			hasDecimal = true;
 			display.insertAdjacentText('beforeend', '.');
 			displayValue = Number(display.innerHTML);
+			console.log("After pressing decimal, displayValue is " + displayValue);
+			console.log("After pressing decimal, displayInnerHTML is " + display.innerHTML);
 			break;
 		case true:
 			break;
@@ -101,7 +112,7 @@ function clr(type){
 	if (type !== "equalsType"){
 		result = 0;
 	}
-	display.innerHTML = 0;
+	display.innerHTML = "0";
 	memory.innerHTML = '';
 	displayValue = 0;
 	memoryValue = 0;
@@ -110,6 +121,9 @@ function clr(type){
 	opInProgress = false;
 	
 }
+/////////
+/////////
+/////////
 /////////
 window.addEventListener("keydown", (e) => {
     switch (e.key) {
