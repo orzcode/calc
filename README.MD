@@ -13,12 +13,8 @@ Your calculator should not evaluate more than a single pair of numbers at a time
 You should round answers with long decimals so that they don’t overflow the screen.
 Pressing = before entering all of the numbers or an operator could cause problems!
 
-Display a snarky error message if the user tries to divide by 0… and don’t let it crash your calculator!
-
 
 Extra Credit
-
-Make it look nice! This is a great project to practice your CSS skills. At least make the operations a different color from the keypad buttons.
 
 Add a “backspace” button, so the user can undo if they click the wrong number.
 
