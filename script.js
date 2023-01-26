@@ -60,9 +60,9 @@ function equals(type){
 			break;
 	}
 	clr("equalsType");
-	displayValue = parseFloat(result.toFixed(2));
-	display.innerHTML = parseFloat(result.toFixed(2));
-	//rounds to 2 decimal places, and lops off extra zeroes
+	displayValue = parseFloat(result.toFixed(9));
+	display.innerHTML = parseFloat(result.toFixed(9));
+	//rounds to 9 decimal places, and lops off extra zeroes
 	result = displayValue;
 	resultDisplayed = true;
 	opInProgress = false;
