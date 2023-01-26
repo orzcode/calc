@@ -9,6 +9,7 @@ let operatorType;
 let result;
 let opInProgress = false;
 let resultDisplayed = false;
+let newOperatorType;
 //////////
 ////////////////////////////
 function add(value1, value2){
@@ -40,17 +41,21 @@ function divide(value1, value2){
 function operation(operator, symbol){
 	hasDecimal = false;
 	
-	operatorType = operator;
+	
 
 	if(opInProgress === false){
 		opInProgress = true;
 		memory.innerHTML = displayValue + " " + symbol;
 		memoryValue = displayValue;
+		operatorType = operator;
 		display.innerHTML = 0; //do I really want to clear display? retain original value?
 	} else {
 		//works only for same operation! using a second, different op fucks it up
 		//need to store previous operation, and then show NEW symbol in memory
-		switch(operator){
+
+		newOperatorType = operator; //dogshit
+
+		switch(operatorType){
 			case "add":
 				add(memoryValue, displayValue);
 				break;
@@ -64,9 +69,9 @@ function operation(operator, symbol){
 				divide(memoryValue, displayValue);
 				break;
 		}
-		console.log("'Result' after doing a 'switched' operation: " + result);
+		console.log("'Result' after doing a 'switched' (eg 2nd) operation: " + result);
 		memoryValue = result;
-		memory.innerHTML = result;
+		memory.innerHTML = result + " " + symbol;
 		display.innerHTML = 0; //do I really want to clear display? retain original value?
 
 	}	
