@@ -7,20 +7,26 @@ let memoryValue;
 let hasDecimal = false;
 let operatorType;
 let result;
-let opInProgress;
+let opInProgress = false;
 let resultDisplayed = false;
 //////////
 ////////////////////////////
 function add(value1, value2){
 	result = Number(value1) + Number(value2);
+	console.log("during addition func, memoryValue is " + memoryValue);
+	console.log("during addition func, displayValue is " + displayValue);
 	return result;
 }
 function subtract(value1, value2){
 	result = Number(value1) - Number(value2);
+	console.log("during subtraction func, memoryValue is " + memoryValue);
+	console.log("during subtraction func, displayValue is " + displayValue);
 	return result;
 }
 function multiply(value1, value2){
 	result = Number(value1) * Number(value2);
+	console.log("during multiplication func, memoryValue is " + memoryValue);
+	console.log("during multiplication func, displayValue is " + displayValue);
 	return result;
 }
 function divide(value1, value2){
@@ -33,15 +39,38 @@ function divide(value1, value2){
 ///////////////////////////
 function operation(operator, symbol){
 	hasDecimal = false;
-	memory.innerHTML = displayValue + " " + symbol;
-	memoryValue = displayValue;
-	display.innerHTML = 0; //do I really want to clear display?
-
-	opInProgress = true;
-
+	
 	operatorType = operator;
-	return operatorType;
-		////method one - on hold for now
+
+	if(opInProgress === false){
+		opInProgress = true;
+		memory.innerHTML = displayValue + " " + symbol;
+		memoryValue = displayValue;
+		display.innerHTML = 0; //do I really want to clear display? retain original value?
+	} else {
+		//works only for same operation! using a second, different op fucks it up
+		//need to store previous operation, and then show NEW symbol in memory
+		switch(operator){
+			case "add":
+				add(memoryValue, displayValue);
+				break;
+			case "subtract":
+				subtract(memoryValue, displayValue);
+				break;
+			case "multiply":
+				multiply(memoryValue, displayValue);
+				break;
+			case "divide":
+				divide(memoryValue, displayValue);
+				break;
+		}
+		console.log("'Result' after doing a 'switched' operation: " + result);
+		memoryValue = result;
+		memory.innerHTML = result;
+		display.innerHTML = 0; //do I really want to clear display? retain original value?
+
+	}	
+	return operatorType;		
 }
 /////////
 function equals(type){
@@ -71,10 +100,10 @@ function equals(type){
 }
 /////////
 function keyedNumber(keyedNumber){
-	if (opInProgress === false){
-		displayValue = '';
-		opInProgress = true;
-	}
+	// if (opInProgress === false){
+	// 	displayValue = '';
+	// 	opInProgress = true;
+	// }
 	if (display.innerHTML === "0"){
 		display.innerHTML = '';
 		console.log("IF sub-statement #1 (displayInnerHTML 0 was true) triggered")
