@@ -41,20 +41,7 @@ function divide(value1, value2){
 function operation(operator, symbol){
 	hasDecimal = false;
 	
-	
-
-	if(opInProgress === false){
-		opInProgress = true;
-		memory.innerHTML = displayValue + " " + symbol;
-		memoryValue = displayValue;
-		operatorType = operator;
-		display.innerHTML = 0; //do I really want to clear display? retain original value?
-	} else {
-		//works only for same operation! using a second, different op fucks it up
-		//need to store previous operation, and then show NEW symbol in memory
-
-		newOperatorType = operator; //dogshit
-
+	if(opInProgress === true){
 		switch(operatorType){
 			case "add":
 				add(memoryValue, displayValue);
@@ -73,8 +60,17 @@ function operation(operator, symbol){
 		memoryValue = result;
 		memory.innerHTML = result + " " + symbol;
 		display.innerHTML = 0; //do I really want to clear display? retain original value?
+		operatorType = operator;
 
-	}	
+	}else 
+
+	if(opInProgress === false){
+		opInProgress = true;
+		memory.innerHTML = displayValue + " " + symbol;
+		memoryValue = displayValue;
+		operatorType = operator;
+		display.innerHTML = 0; //do I really want to clear display? retain original value?
+	}
 	return operatorType;		
 }
 /////////
