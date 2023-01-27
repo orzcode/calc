@@ -27,7 +27,8 @@ li {
 }
 a {
 	text-decoration: none;
-	color:initial;
+	color:white;
+	text-shadow: 1px 1px 1px black;
 }
 .btnShadow {
 	cursor:pointer;
@@ -171,7 +172,14 @@ a {
 	justify-content: end;
 }
 
+/*//////////////////*/
+.footer{
+	font-family: Roboto;
+	margin: auto;
+	width: fit-content;
+}
 
+/*/////////////////////*
 
 /* KEYPAD BUTTON STYLING BELOW */
 .keySq{
@@ -244,4 +252,7 @@ a {
 	#calculator{
 		margin: auto;
 	};
+	.footer{
+		display:none;
+	}
 }

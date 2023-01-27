@@ -59,7 +59,7 @@ function operation(operator, symbol){
 		console.log("'Result' after doing a 'switched' (eg 2nd) operation: " + result);
 		memoryValue = result;
 		memory.innerHTML = result + " " + symbol;
-		display.innerHTML = 0; //do I really want to clear display? retain original value?
+		display.innerHTML = 0; //do I really want to clear display? OR retain original value?
 		operatorType = operator;
 
 	}else 
@@ -69,7 +69,7 @@ function operation(operator, symbol){
 		memory.innerHTML = displayValue + " " + symbol;
 		memoryValue = displayValue;
 		operatorType = operator;
-		display.innerHTML = 0; //do I really want to clear display? retain original value?
+		display.innerHTML = 0; //do I really want to clear display? OR retain original value?
 	}
 	return operatorType;		
 }
@@ -163,8 +163,9 @@ function clr(type){
 	
 }
 /////////
+
 /////////
-/////////
+/*--Keyboard Numpad functionality--*/
 /////////
 window.addEventListener("keydown", (e) => {
     switch (e.key) {
@@ -186,8 +187,9 @@ window.addEventListener("keydown", (e) => {
         case "Enter": equals(operatorType); break;
     }
 })
-///////////
-//DARKMODE TOGGLE//
+//////////////////////////////////////
+
+///////////DARKMODE TOGGLE///////////
 const toggleSwitch = document.querySelector('.darkmode-switch input[type="checkbox"]');
 
 function switchTheme(e) {
@@ -200,3 +202,4 @@ function switchTheme(e) {
 }
 
 toggleSwitch.addEventListener('change', switchTheme, false);
+///////////DARKMODE TOGGLE///////////
