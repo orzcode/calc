@@ -60,7 +60,7 @@ function operation(operator, symbol){
 		opManager(operatorType);
 		console.log("'Result' after doing a 'switched' (eg 2nd) operation: " + result);
 		memoryValue = result;
-		memory.innerHTML = result + " " + symbol;
+		memory.innerHTML = parseFloat(result.toFixed(4)) + " " + symbol;
 		display.innerHTML = 0; //do I really want to clear display? OR retain original value?
 		operatorType = operator;
 	}else 
@@ -84,9 +84,9 @@ function operation(operator, symbol){
 function equals(type){
 	opManager(type);
 	clr("equalsType");
-	displayValue = parseFloat(result.toFixed(9));
-	display.innerHTML = parseFloat(result.toFixed(9));
-	//rounds to 9 decimal places, and lops off extra zeroes
+	displayValue = parseFloat(result.toFixed(4));
+	display.innerHTML = parseFloat(result.toFixed(4));
+	//rounds to 4 decimal places, and lops off extra zeroes
 
 	//Displays message IF divided by zero//
 	if(divideByZero == true){
