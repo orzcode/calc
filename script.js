@@ -12,7 +12,26 @@ let resultDisplayed = false;
 let newOperatorType;
 let divideByZero = false;
 //////////
+function opManager(type){
+	switch(type){
+		case "add":
+			add(memoryValue, displayValue);
+			break;
+		case "subtract":
+			subtract(memoryValue, displayValue);
+			break;
+		case "multiply":
+			multiply(memoryValue, displayValue);
+			break;
+		case "divide":
+			divide(memoryValue, displayValue);
+			break;
+	}
+}
+//a 'manager' function that simplifies and reduces code when called later
+
 ////////////////////////////
+//the raw equation functions//
 function add(value1, value2){
 	result = Number(value1) + Number(value2);
 	return result;
@@ -38,26 +57,12 @@ function operation(operator, symbol){
 	hasDecimal = false;
 	
 	if(opInProgress === true){
-		switch(operatorType){
-			case "add":
-				add(memoryValue, displayValue);
-				break;
-			case "subtract":
-				subtract(memoryValue, displayValue);
-				break;
-			case "multiply":
-				multiply(memoryValue, displayValue);
-				break;
-			case "divide":
-				divide(memoryValue, displayValue);
-				break;
-		}
+		opManager(operatorType);
 		console.log("'Result' after doing a 'switched' (eg 2nd) operation: " + result);
 		memoryValue = result;
 		memory.innerHTML = result + " " + symbol;
 		display.innerHTML = 0; //do I really want to clear display? OR retain original value?
 		operatorType = operator;
-
 	}else 
 
 	if(opInProgress === false){
@@ -77,20 +82,7 @@ function operation(operator, symbol){
 }
 /////////
 function equals(type){
-	switch(type){
-		case "add":
-			add(memoryValue, displayValue);
-			break;
-		case "subtract":
-			subtract(memoryValue, displayValue);
-			break;
-		case "multiply":
-			multiply(memoryValue, displayValue);
-			break;
-		case "divide":
-			divide(memoryValue, displayValue);
-			break;
-	}
+	opManager(type);
 	clr("equalsType");
 	displayValue = parseFloat(result.toFixed(9));
 	display.innerHTML = parseFloat(result.toFixed(9));
