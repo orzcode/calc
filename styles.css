@@ -173,10 +173,11 @@ a {
 }
 
 /*//////////////////*/
-.footer{
+footer{
 	font-family: Roboto;
 	margin: auto;
 	width: fit-content;
+	display: none;
 }
 
 /*/////////////////////*
@@ -252,7 +253,10 @@ a {
 	#calculator{
 		margin: auto;
 	};
-	.footer{
-		display:none;
-	}
+}
+
+@media all and (min-width: 769px) {
+	footer{
+		display: block;
+	};
 }
