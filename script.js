@@ -10,29 +10,25 @@ let result;
 let opInProgress = false;
 let resultDisplayed = false;
 let newOperatorType;
+let divideByZero = false;
 //////////
 ////////////////////////////
 function add(value1, value2){
 	result = Number(value1) + Number(value2);
-	console.log("during addition func, memoryValue is " + memoryValue);
-	console.log("during addition func, displayValue is " + displayValue);
 	return result;
 }
 function subtract(value1, value2){
 	result = Number(value1) - Number(value2);
-	console.log("during subtraction func, memoryValue is " + memoryValue);
-	console.log("during subtraction func, displayValue is " + displayValue);
 	return result;
 }
 function multiply(value1, value2){
 	result = Number(value1) * Number(value2);
-	console.log("during multiplication func, memoryValue is " + memoryValue);
-	console.log("during multiplication func, displayValue is " + displayValue);
 	return result;
 }
 function divide(value1, value2){
 	if (Number(value2) === 0){
-		display.innerHTML = "Reality Breaks!";
+		divideByZero = true;
+		return divideByZero;
 	}else
 	result = Number(value1) / Number(value2);
 	return result;
@@ -71,7 +67,13 @@ function operation(operator, symbol){
 		operatorType = operator;
 		display.innerHTML = 0; //do I really want to clear display? OR retain original value?
 	}
-	return operatorType;		
+	//Displays message IF divided by zero//
+	if(divideByZero == true){
+		display.innerHTML = "Reality Broken";
+		divideByZero = false;
+	}
+	//Displays message IF divided by zero//
+	return operatorType;
 }
 /////////
 function equals(type){
@@ -93,6 +95,14 @@ function equals(type){
 	displayValue = parseFloat(result.toFixed(9));
 	display.innerHTML = parseFloat(result.toFixed(9));
 	//rounds to 9 decimal places, and lops off extra zeroes
+
+	//Displays message IF divided by zero//
+	if(divideByZero == true){
+		display.innerHTML = "Reality Broken";
+		divideByZero = false;
+	}
+	//Displays message IF divided by zero - flag resets itself, so not needed during clr//
+
 	result = displayValue;
 	resultDisplayed = true;
 	opInProgress = false;
@@ -105,19 +115,21 @@ function keyedNumber(keyedNumber){
 	// 	displayValue = '';
 	// 	opInProgress = true;
 	// }
+	if(display.innerHTML === "Reality Broken"){
+		display.innerHTML = '';
+		//allows over-writing with digits when division message is shown
+	}
+
 	if (display.innerHTML === "0"){
 		display.innerHTML = '';
-		console.log("IF sub-statement #1 (displayInnerHTML 0 was true) triggered")
 	}
 	if (display.innerHTML === "0."){
 		display.innerHTML = '0.';
-		console.log("IF sub-statement #2 (displayInnerHTML 0. was true) triggered")
 	}
 	////////
 	if (resultDisplayed === true){
 		display.innerHTML = '';
 		resultDisplayed = false;
-		console.log("IF sub-statement #3 (resultDisplayed flag was true) triggered")
 	}
 	//Over-writes the displayed result after hitting Equals, if you press a number.
 	//E.G If display shows 2, and you press 5, it will erase 2 and show 5. As if a fresh start
@@ -160,7 +172,6 @@ function clr(type){
 	memoryValue = 0;	
 	operatorType = '';
 	opInProgress = false;
-	
 }
 /////////
 
