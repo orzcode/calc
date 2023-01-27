@@ -18,6 +18,7 @@ Includes a custom darkmode toggle and numpad support, which was beyond the goals
 
 Future feature roadmap:
 
+* Re-arrange top-level elements such as button, on mobile, so it becomes single-screen
 * Add a “backspace” button, so the user can undo if they click the wrong number.
 * Add calculation history
 * Add extra functions such as percentages, etcetera.
