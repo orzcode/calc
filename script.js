@@ -1,5 +1,9 @@
 let display = document.querySelector('#display');
 let memory = document.querySelector('#memory');
+let dvd = document.querySelector('#dvd');
+let mlt = document.querySelector('#mlt');
+let mns = document.querySelector('#mns');
+let plus = document.querySelector('#plus');
 //////////
 let displayValue = 0;
 display.innerHTML = 0;
@@ -66,6 +70,7 @@ function operation(operator, symbol){
 	}else 
 
 	if(opInProgress === false){
+		dvd.
 		opInProgress = true;
 		memory.innerHTML = displayValue + " " + symbol;
 		memoryValue = displayValue;
