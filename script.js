@@ -15,6 +15,7 @@ let opInProgress = false;
 let resultDisplayed = false;
 let newOperatorType;
 let divideByZero = false;
+let doubleOperator = false;
 //////////
 function opManager(type){
 	switch(type){
@@ -60,6 +61,11 @@ function divide(value1, value2){
 function operation(operator, symbol){
 	hasDecimal = false;
 	
+	if(doubleOperator === true){
+		memory.innerHTML = memoryValue + " " + symbol;
+		operatorType = operator;
+	}else{
+
 	if(opInProgress === true){
 		opManager(operatorType);
 		console.log("'Result' after doing a 'switched' (eg 2nd) operation: " + result);
@@ -67,10 +73,10 @@ function operation(operator, symbol){
 		memory.innerHTML = parseFloat(result.toFixed(4)) + " " + symbol;
 		display.innerHTML = 0; //do I really want to clear display? OR retain original value?
 		operatorType = operator;
+		doubleOperator = true;
 	}else 
 
 	if(opInProgress === false){
-		dvd.
 		opInProgress = true;
 		memory.innerHTML = displayValue + " " + symbol;
 		memoryValue = displayValue;
@@ -78,15 +84,21 @@ function operation(operator, symbol){
 		display.innerHTML = 0; //do I really want to clear display? OR retain original value?
 	}
 	//Displays message IF divided by zero//
-	if(divideByZero == true){
+	if(divideByZero === true){
 		display.innerHTML = "Reality Broken";
 		divideByZero = false;
 	}
+}
 	//Displays message IF divided by zero//
 	return operatorType;
 }
 /////////
 function equals(type){
+	if(doubleOperator === true){
+		displayValue = memoryValue;
+		display.innerHTML = memoryValue;
+		clr("equalsType"); //THIS NEEDS FIXING
+	}else{
 	opManager(type);
 	clr("equalsType");
 	displayValue = parseFloat(result.toFixed(4));
@@ -98,6 +110,7 @@ function equals(type){
 		display.innerHTML = "Reality Broken";
 		divideByZero = false;
 	}
+
 	//Displays message IF divided by zero - flag resets itself, so not needed during clr//
 
 	result = displayValue;
@@ -105,6 +118,7 @@ function equals(type){
 	opInProgress = false;
 	console.log("After hitting Equals, result var is: " + result + " and type is " + typeof result);
 	console.log("After hitting Equals, opInProgress var is: " + opInProgress);
+}
 }
 /////////
 function keyedNumber(keyedNumber){
@@ -139,6 +153,7 @@ function keyedNumber(keyedNumber){
 	console.log("After pressing number, displayInnerHTML is " + display.innerHTML);
 	console.log("After pressing number, result is: " + result + " and type is " + typeof result);
 	console.log("After pressing number, opInProgress is: " + opInProgress);
+	doubleOperator = false;
 }
 // Appends the keyed number to the right of any current numbers
 // in the Display, and then sets the full Display value var
@@ -169,6 +184,7 @@ function clr(type){
 	memoryValue = 0;	
 	operatorType = '';
 	opInProgress = false;
+	doubleOperator = false;
 }
 /////////
 
