@@ -96,13 +96,31 @@ function operation(operator, symbol) {
 }
 /////////
 function equals(type) {
+	// console.log("opInProg is " + opInProgress);
+	// console.log("resultvar is " + result);
+	// console.log("displayVal is " + displayValue);
+	// console.log("display inner is " + display.innerHTML);
+	// console.log("display inner TYPE is " + typeof display.innerHTML);
+	// console.log("memVal is " + memoryValue);
+	// console.log("tempMemVal is " + tempMemVal);
+	if((opInProgress === true) && (display.innerHTML === "0")){
+		tempMemVal = memoryValue;
+		clr("equalsType");
+		displayValue = tempMemVal;
+		display.innerHTML = tempMemVal;
+		resultDisplayed = true;
+	}else
+
 	if (doubleOperator === true) {
 		clr("equalsType");
 		displayValue = tempMemVal;
 		display.innerHTML = tempMemVal;
 		resultDisplayed = true;
 		//only activates when operator btn pressed twice in sucession
-	} else {
+	} 
+	
+	else	
+	{
 		opManager(type);
 		clr("equalsType");
 		displayValue = parseFloat(result.toFixed(4));
